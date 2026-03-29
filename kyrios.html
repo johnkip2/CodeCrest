@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyrios Construction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* NAV */
+        nav {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 60px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            color: #f5a623;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+
+        nav ul a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover {
+            color: #f5a623;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                        url('project4.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: #f5a623;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 560px;
+            margin-bottom: 36px;
+            color: #ddd;
+        }
+
+        .hero a {
+            background-color: #f5a623;
+            color: #1a1a1a;
+            padding: 14px 36px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+
+        .hero a:hover {
+            background-color: #e09410;
+        }
+
+        /* SERVICES */
+        #services {
+            padding: 80px 60px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        #services h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        #services .subtitle {
+            color: #777;
+            margin-bottom: 50px;
+            font-size: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            border-top: 4px solid #f5a623;
+            padding: 36px 24px;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+
+        .service-card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* PROJECTS */
+        #projects {
+            padding: 80px 60px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        #projects h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        #projects .subtitle {
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            height: 220px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .project-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            color: #fff;
+            padding: 20px 16px 16px;
+            text-align: left;
+        }
+
+        .project-card .overlay h3 {
+            font-size: 1rem;
+        }
+
+        .project-card .overlay span {
+            font-size: 0.8rem;
+            color: #f5a623;
+        }
+
+        /* ABOUT */
+        #about {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 80px 60px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #about .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        #about h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        #about h2 span {
+            color: #f5a623;
+        }
+
+        #about p {
+            line-height: 1.8;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+
+        .stats {
+            flex: 1;
+            min-width: 280px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat {
+            background: #2a2a2a;
+            padding: 28px 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 2.2rem;
+            color: #f5a623;
+        }
+
+        .stat p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-top: 6px;
+        }
+
+        /* CONTACT */
+        #contact {
+            padding: 80px 60px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        #contact h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        #contact .subtitle {
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .contact-form {
+            max-width: 560px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #f5a623;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .form-msg {
+            padding: 12px 16px;
+            border-radius: 3px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .form-msg.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-msg.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .contact-form button {
+            background-color: #f5a623;
+            color: #1a1a1a;
+            border: none;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .contact-form button:hover {
+            background-color: #e09410;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #111;
+            color: #666;
+            text-align: center;
+            padding: 24px 60px;
+            font-size: 0.85rem;
+        }
+
+        footer span {
+            color: #f5a623;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">CodeCrest</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Coding <span>Peak</span><br>Since 2026</h1>
+        <p>We deliver high-quality Websites for  commercial, RealEstate projects.</p>
+        <a href="#contact">Get a Free Quote</a>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p class="subtitle">What we do best</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon">🏗️</div>
+                <h3>General Construction</h3>
+                <p>Full-scale building projects from foundation to finish, on time and on budget.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🏘️</div>
+                <h3>Residential</h3>
+                <p>Custom homes and renovations designed to match your vision and lifestyle.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🏢</div>
+                <h3>Commercial</h3>
+                <p>Office buildings, retail spaces, and warehouses built for durability and function.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🔧</div>
+                <h3>Renovation</h3>
+                <p>Interior and exterior remodeling that breathes new life into existing structures.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2>Recent Projects</h2>
+        <p class="subtitle">A glimpse of our work</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="project5.jpg" alt="Modern Office">
+                <div class="overlay">
+                    <span>Commercial</span>
+                    <h3>Modern Office Complex</h3>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="project7.jpeg" alt="Luxury Villa">
+                <div class="overlay">
+                    <span>Residential</span>
+                    <h3>Luxury Villa</h3>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="project6.jpg" alt="Industrial Warehouse">
+                <div class="overlay">
+                    <span>Industrial</span>
+                    <h3>Industrial Warehouse</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-text">
+            <h2>About <span>Kyrios</span></h2>
+            <p>We are a new Website Construction company but strong.</p>
+            <p>Our team of skilled engineers, developers  work closely with clients to turn their vision into reality — on time, every time.</p>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <h3>10+</h3>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat">
+                <h3>1+</h3>
+                <p>Years of Experience</p>
+            </div>
+            <div class="stat">
+                <h3>120+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat">
+                <h3>15+</h3>
+                <p>Industry Awards</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p class="subtitle">Ready to start your project? Reach out today.</p>
+        <form class="contact-form" id="contactForm">
+            <input type="text" name="from_name" placeholder="Your Name" required>
+            <input type="email" name="from_email" placeholder="Your Email" required>
+            <input type="text" name="project_type" placeholder="Project Type">
+            <textarea name="message" placeholder="Tell us about your project..." required></textarea>
+            <button type="submit" id="submitBtn">Send Message</button>
+            <div class="form-msg success" id="successMsg">Message sent! We'll get back to you soon.</div>
+            <div class="form-msg error" id="errorMsg">Something went wrong. Please try again.</div>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 <span>CodeCrest Solutions</span>. All rights reserved.</p>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ─── REPLACE THESE 3 VALUES WITH YOUR OWN FROM EMAILJS DASHBOARD ───
+        const EMAILJS_PUBLIC_KEY  = 'aQm3VKluILyfUerfR';   // Account > API Keys
+        const EMAILJS_SERVICE_ID  = 'service_uo4qnbv';   // Email Services tab
+        const EMAILJS_TEMPLATE_ID = 'template_exp1bdb';  // Email Templates tab
+        // ────────────────────────────────────────────────────────────────────
+
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn        = document.getElementById('submitBtn');
+            const successMsg = document.getElementById('successMsg');
+            const errorMsg   = document.getElementById('errorMsg');
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            successMsg.style.display = 'none';
+            errorMsg.style.display   = 'none';
+
+            emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+                .then(function() {
+                    btn.textContent = 'Send Message';
+                    btn.disabled = false;
+                    successMsg.style.display = 'block';
+                    document.getElementById('contactForm').reset();
+                }, function() {
+                    btn.textContent = 'Send Message';
+                    btn.disabled = false;
+                    errorMsg.style.display = 'block';
+                });
+        });
+    </script>
+
+</body>
+
+</html>
